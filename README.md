@@ -7,15 +7,31 @@ React Native Send SMS is a JavaScript library for React Native applications that
 ```sh
 npm install react-native-send-sms
 ```
+## Android Setup
+
+It's very important ask for permission in your AndroidManifest.xml file if you need to use Send Message directly.
+
+
+Please add this line to your AndroidManifest.xml before using this example:
+- In `android/app/src/main/AndroidManifest.xml` add the following lines:
+
+```xml
+<uses-permission android:name="android.permission.SEND_SMS"/>
+```
 
 ## Usage
 
 ```js
-import { multiply } from 'react-native-send-sms';
+import {SendDirectSms} from 'react-native-send-sms';
 
 // ...
 
-const result = await multiply(3, 7);
+function sendSmsData(mobileNumber, bodySMS) {
+    SendDirectSms(mobileNumber, bodySMS)
+        .then((res: any) => console.log("then", res))
+        .catch((err: any) => console.log("catch", err))
+}
+
 ```
 
 ## Contributing
