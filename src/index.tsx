@@ -21,6 +21,7 @@ const SendDirectSms = async (mobileNumber: string, bodySMS: string): Promise<str
     return new Promise(async (resolve, reject) => {
         if (mobileNumber) {
             try {
+                // @ts-ignore
                 const granted = await PermissionsAndroid.request(PermissionsAndroid.PERMISSIONS.SEND_SMS);
                 if (granted === PermissionsAndroid.RESULTS.GRANTED) {
                     SendSms.sendDirectSms(mobileNumber, bodySMS);
